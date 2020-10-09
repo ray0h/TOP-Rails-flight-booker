@@ -1,0 +1,12 @@
+
+<%= form_with(url: '/flights', method: 'get', class: 'p-4') do %>
+  <%= label_tag(:dep_air, 'Departure Airport: ') %><br/>
+  <%= collection_select :airport, :dep_air, @airports, :id, :city %><br/>
+  <%= label_tag(:arr_air, 'Arrival Airport: ') %><br/>
+  <%= collection_select :airport, :arr_air, @airports, :id, :city %><br/>
+  <%= label_tag(:no_pass, 'No of Passengers: ') %><br/>
+  <%= select_tag :no_pass, options_for_select(1..4) %><br/>
+  <%= label_tag(:dep_date, 'Departure date: ') %><br/>
+  <%= select_tag :dep_date, options_for_select(@flights.dep_dates) %><br/>
+  <%= submit_tag 'retrieve' %>
+<% end %>
