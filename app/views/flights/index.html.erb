@@ -1,3 +1,4 @@
+<%= link_to 'home', root_path %>
 
 <%= form_with(url: '/', method: 'get', local: true, class: 'p-4') do %>
   <%= label_tag(:dep_air, 'Departure Airport: ') %><br/>
@@ -11,17 +12,6 @@
   <%= submit_tag 'retrieve' %>
 <% end %>
 <br/>
-<%= params %><br/>
-<%= params[:search]['dep_date'] if params[:search].present? %>
 
-<% if @flights.present? %>
-  <div class = 'p-4'>
-    No Passengers:<br/>
-    <% @flights.each do |flight| %>
-      Departure Date: <%= flight.dep_date.strftime('%m/%d/%Y') %><br/>
-      Departure Time: <%= flight.dep_time.strftime('%l:%M %P') %><br/>
-      Departure Airport: <%= flight.origination.city %><br/>
-      Arrival Airport: <%= flight.destination.city %><br/>
-    <% end %>
-  </div>
-<% end %>
+<%= render partial: 'results_form'%>
+

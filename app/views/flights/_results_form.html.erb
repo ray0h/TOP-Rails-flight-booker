@@ -1,0 +1,17 @@
+
+<% if @flights.present? %>
+  <h2 class='px-4 font-bold'>Choose a Flight:</h2>
+  <%= form_with url: '/bookings/new', method: 'get', local:true, class: 'p-4' do |f| %>
+    <% @flights.each do |flight| %>
+      <%= f.radio_button 'flight', flight.id, { required: 'required', class: '' } %>
+      <span>
+        <strong>Flight No: </strong><%= flight.id %>, 
+        <strong>Dep Date: </strong><%= flight.dep_date.strftime('%m/%d/%Y') %>,
+        <strong>Dep Time: </strong><%= flight.dep_time.strftime('%l:%M %P') %>, 
+        <%= flight.origination.city %> TO <%= flight.destination.city %> 
+      </span><br/>
+    <% end %>
+    <%= f.hidden_field :no_pass, :value => params[:search][:no_pass] %>
+    <%= f.submit 'Book Flight' %>
+  <% end %>
+<% end %>
