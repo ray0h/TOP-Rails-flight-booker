@@ -1,12 +1,27 @@
 
-<%= form_with(url: '/flights', method: 'get', class: 'p-4') do %>
+<%= form_with(url: '/', method: 'get', local: true, class: 'p-4') do %>
   <%= label_tag(:dep_air, 'Departure Airport: ') %><br/>
-  <%= collection_select :airport, :dep_air, @airports, :id, :city %><br/>
+  <%= collection_select :search, :dep_air, @airports, :id, :city, { selected: (params[:search][:dep_air] if params[:search].present?) } %><br/>
   <%= label_tag(:arr_air, 'Arrival Airport: ') %><br/>
-  <%= collection_select :airport, :arr_air, @airports, :id, :city %><br/>
+  <%= collection_select :search, :arr_air, @airports, :id, :city, { selected: (params[:search][:arr_air] if params[:search].present?) } %><br/>
   <%= label_tag(:no_pass, 'No of Passengers: ') %><br/>
-  <%= select_tag :no_pass, options_for_select(1..4) %><br/>
+  <%= select_tag 'search[no_pass]', options_for_select(1..4, (params[:search][:no_pass] if params[:search].present?) ) %><br/>
   <%= label_tag(:dep_date, 'Departure date: ') %><br/>
-  <%= select_tag :dep_date, options_for_select(@flights.dep_dates) %><br/>
+  <%= select_tag 'search[dep_date]', options_for_select(@dates.map { |date| [date.strftime('%m/%d/%Y'), date] }, (params[:search][:dep_date] if params[:search].present?) ) %><br/>
   <%= submit_tag 'retrieve' %>
+<% end %>
+<br/>
+<%= params %><br/>
+<%= params[:search]['dep_date'] if params[:search].present? %>
+
+<% if @flights.present? %>
+  <div class = 'p-4'>
+    No Passengers:<br/>
+    <% @flights.each do |flight| %>
+      Departure Date: <%= flight.dep_date.strftime('%m/%d/%Y') %><br/>
+      Departure Time: <%= flight.dep_time.strftime('%l:%M %P') %><br/>
+      Departure Airport: <%= flight.origination.city %><br/>
+      Arrival Airport: <%= flight.destination.city %><br/>
+    <% end %>
+  </div>
 <% end %>
