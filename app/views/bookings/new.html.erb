@@ -1,0 +1,22 @@
+<%= params %><br/>
+
+<%= form_with model: @booking, class: 'px-4' do |f| %>
+  <div>
+    <h2>Flight No: <%= @flight.id %></h2>
+    Departure Date: <%= @flight.dep_date.strftime('%m/%d/%Y') %><br/>
+    Departure Time: <%= @flight.dep_time.strftime('%l:%M %P') %><br/>
+    Departure Airport: <%= @flight.origination.city %><br/>
+    Arrival Airport: <%= @flight.destination.city %><br/>
+  </div>
+  <br/>
+  Enter Passenger Info: <br/>
+  <%= f.fields_for :passengers do |pass_form| %>
+    Passenger <%= pass_form.index + 1 %>: <br/>
+    <%= pass_form.label 'Name: ' %>
+    <%= pass_form.text_field :name, class: 'border border-black'%><br/>
+    <%= pass_form.label 'Email: ' %>
+    <%= pass_form.text_field :email, class: 'border border-black' %><br/>
+  <% end %>
+  <%= f.hidden_field :flight_id, :value => @flight.id %>
+  <%= f.submit 'Submit' %>
+<% end %>

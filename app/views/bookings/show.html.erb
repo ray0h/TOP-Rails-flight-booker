@@ -1,0 +1,14 @@
+Booking Show
+<%= params %><br/>
+<div class='p-4'>
+  <% @booking.passengers.each do |p| %>
+    Name: <%= p.name %><br/>
+    Email: <%= p.email %><br/>
+  <% end %>
+  Flight: <%= @booking.flight.id %><br/>
+  Dep Date: <%= @booking.flight.dep_date.strftime('%m/%d/%Y') %><br/>
+  Dep Time: <%= @booking.flight.dep_time.strftime('%l:%M %P') %><br/>
+  Flight Time: <%= @booking.flight.flight_time %><br/>
+  Departure Airport: <%= @booking.flight.origination.city %><br/>
+  Arrival Airport: <%= @booking.flight.destination.city %><br/>
+</div>
