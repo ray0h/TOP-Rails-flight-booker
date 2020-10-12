@@ -1,15 +1,25 @@
-<%= link_to 'home', root_path %>
 
-<%= form_with(url: '/', method: 'get', local: true, class: 'p-4') do %>
-  <%= label_tag(:dep_air, 'Departure Airport: ') %><br/>
-  <%= collection_select :search, :dep_air, @airports, :id, :code, { selected: (params[:search][:dep_air] if params[:search].present?) } %><br/>
-  <%= label_tag(:arr_air, 'Arrival Airport: ') %><br/>
-  <%= collection_select :search, :arr_air, @airports, :id, :code, { selected: (params[:search][:arr_air] if params[:search].present?) } %><br/>
-  <%= label_tag(:no_pass, 'No of Passengers: ') %><br/>
-  <%= select_tag 'search[no_pass]', options_for_select(1..4, (params[:search][:no_pass] if params[:search].present?) ) %><br/>
-  <%= label_tag(:dep_date, 'Departure date: ') %><br/>
-  <%= select_tag 'search[dep_date]', options_for_select(@dates.map { |date| [date.strftime('%m/%d/%Y'), date] }, (params[:search][:dep_date] if params[:search].present?) ) %><br/>
-  <%= submit_tag 'retrieve' %>
+<%= form_with(url: '/', method: 'get', local: true, class: 'bg-orange-300 px-6 py-4 m-auto mt-4 w-3/4 md:w-1/2 border border-black') do %>
+  <h2 class='font-bold text-lg'>Search Flights:</h2>
+  <div class='grid grid-flow-row grid-cols-2 grid-rows-2'>
+    <div class=''>
+      <%= label_tag(:dep_air, 'Departing: ', class: 'underline') %><br/>
+      <%= collection_select :search, :dep_air, @airports, :id, :code, { selected: (params[:search][:dep_air] if params[:search].present?) } %>
+    </div>
+    <div>
+    <%= label_tag(:arr_air, 'Arriving: ', class: 'underline') %><br/>
+    <%= collection_select :search, :arr_air, @airports, :id, :code, { selected: (params[:search][:arr_air] if params[:search].present?) } %>
+    </div>
+    <div>
+    <%= label_tag(:no_pass, 'No of Passengers: ', class: 'underline') %><br/>
+    <%= select_tag 'search[no_pass]', options_for_select(1..4, (params[:search][:no_pass] if params[:search].present?) ) %><br/>
+    </div>
+    <div>
+    <%= label_tag(:dep_date, 'Departure date: ', class: 'underline') %><br/>
+    <%= select_tag 'search[dep_date]', options_for_select(@dates.map { |date| [date.strftime('%B %d, %Y'), date] }, (params[:search][:dep_date] if params[:search].present?) ) %>
+    </div>
+  </div>
+  <%= submit_tag 'retrieve', class: 'px-2 py-1 mt-2 bg-blue-400 rounded cursor-pointer hover:bg-blue-500 hover:text-white' %>
 <% end %>
 <br/>
 

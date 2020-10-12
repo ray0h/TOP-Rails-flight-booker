@@ -1,0 +1,9 @@
+
+<%= form_with(url: '/bookings_search', method: 'get', local: true, class: 'bg-orange-300 px-6 py-4 m-auto mt-4 w-3/4 md:w-1/2 border border-black') do %>
+  <span class='text-red-600'><%= flash['error'] if flash['error']%></span>
+
+  <h2 class='font-bold text-lg'>Enter Booking Confirmation Number:</h2>
+  <%= label_tag(:id, 'Booking Confirmation Number: ', class: 'underline') %><br/>
+  <%= text_field_tag :id %><br/>
+  <%= submit_tag 'Find Confirmation', class: 'px-2 py-1 mt-2 bg-blue-400 rounded cursor-pointer hover:bg-blue-500 hover:text-white' %>
+<% end %>

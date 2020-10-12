@@ -1,15 +1,21 @@
-Booking Show
-<%= params %><br/>
-<div class='p-4'>
-  <% @booking.passengers.each do |p| %>
-    Name: <%= p.name %><br/>
-    Email: <%= p.email %><br/>
-  <% end %>
-  
-  Flight: <%= @booking.flight.id %><br/>
-  Dep Date: <%= @booking.flight.dep_date.strftime('%m/%d/%Y') %><br/>
-  Dep Time: <%= @booking.flight.dep_time.strftime('%l:%M %P') %><br/>
-  Flight Time: <%= @booking.flight.flight_time %><br/>
-  Departure Airport: <%= @booking.flight.depart.code %><br/>
-  Arrival Airport: <%= @booking.flight.arrival.code %><br/>
+<div class='bg-orange-300 px-6 py-4 m-auto mt-4 w-3/4 md:w-1/2 border border-black'>
+  <div>
+    <h2 class='text-lg font-bold'>Booking Confirmation</h2>
+    Confirmation Number: <%=@booking.id %><br/>
+    <% @booking.passengers.each_with_index do |p, ind| %>
+      <strong>Passenger <%= ind+1%></strong><br/>
+      <u>Name</u>: <%= p.name %><br/>
+      <u>Contact</u>: <%= p.email %><br/>
+    <% end %>
+  </div>
+  <hr class='border-black pb-1 mt-2'>
+  <div>
+    <h2 class='text-lg font-bold'>Flight Details: </h2>
+    <u>Flight No</u>: <%= @booking.flight.id %><br/>
+    <u>Dep Date</u>: <%= @booking.flight.dep_date.strftime('%a, %B %d, %Y') %><br/>
+    <u>Dep Time</u>: <%= @booking.flight.dep_time.strftime('%l:%M %P') %><br/>
+    <u>Flight Time</u>: <%= @booking.flight.flight_time %><br/>
+    <u>Itinerary</u>: <%= @booking.flight.depart.code %> &#x2192 <%= @booking.flight.arrival.code %><br/>
+  </div>
 </div>
+
