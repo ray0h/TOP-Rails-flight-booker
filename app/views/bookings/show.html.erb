@@ -5,10 +5,11 @@ Booking Show
     Name: <%= p.name %><br/>
     Email: <%= p.email %><br/>
   <% end %>
+  
   Flight: <%= @booking.flight.id %><br/>
   Dep Date: <%= @booking.flight.dep_date.strftime('%m/%d/%Y') %><br/>
   Dep Time: <%= @booking.flight.dep_time.strftime('%l:%M %P') %><br/>
   Flight Time: <%= @booking.flight.flight_time %><br/>
-  Departure Airport: <%= @booking.flight.origination.city %><br/>
-  Arrival Airport: <%= @booking.flight.destination.city %><br/>
+  Departure Airport: <%= @booking.flight.depart.code %><br/>
+  Arrival Airport: <%= @booking.flight.arrival.code %><br/>
 </div>

@@ -8,7 +8,8 @@
         <strong>Flight No: </strong><%= flight.id %>, 
         <strong>Dep Date: </strong><%= flight.dep_date.strftime('%m/%d/%Y') %>,
         <strong>Dep Time: </strong><%= flight.dep_time.strftime('%l:%M %P') %>, 
-        <%= flight.origination.city %> TO <%= flight.destination.city %> 
+        <%= flight.depart.code %> TO <%= flight.arrival.code %>, 
+        <strong>Flight Time: </strong><%= flight.flight_time %> 
       </span><br/>
     <% end %>
     <%= f.hidden_field :no_pass, :value => params[:search][:no_pass] %>

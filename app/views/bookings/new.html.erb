@@ -5,8 +5,8 @@
     <h2>Flight No: <%= @flight.id %></h2>
     Departure Date: <%= @flight.dep_date.strftime('%m/%d/%Y') %><br/>
     Departure Time: <%= @flight.dep_time.strftime('%l:%M %P') %><br/>
-    Departure Airport: <%= @flight.origination.city %><br/>
-    Arrival Airport: <%= @flight.destination.city %><br/>
+    Departure Airport: <%= @flight.depart.code %><br/>
+    Arrival Airport: <%= @flight.arrival.code %><br/>
   </div>
   <br/>
   Enter Passenger Info: <br/>
