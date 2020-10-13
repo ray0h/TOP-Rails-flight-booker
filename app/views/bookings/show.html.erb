@@ -1,7 +1,7 @@
 <div class='bg-orange-300 px-6 py-4 m-auto mt-4 w-3/4 md:w-1/2 border border-black'>
   <div>
     <h2 class='text-lg font-bold'>Booking Confirmation</h2>
-    Confirmation Number: <%=@booking.id %><br/>
+    <u>Confirmation Number</u>: <%=@booking.id %><br/>
     <% @booking.passengers.each_with_index do |p, ind| %>
       <strong>Passenger <%= ind+1%></strong><br/>
       <u>Name</u>: <%= p.name %><br/>
