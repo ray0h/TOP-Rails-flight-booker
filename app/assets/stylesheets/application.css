@@ -13,3 +13,13 @@
  *= require_tree .
  *= require_self
  */
+
+ .box {
+   width: 250px;
+   height: 200px;
+ }
+
+ .big-box {
+   width: 400px;
+   height: 400px;
+ }
