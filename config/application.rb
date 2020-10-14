@@ -16,7 +16,10 @@ module TOPRailsFlightBooker
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
 
-    config.active_record.default_timezone = :local
-    config.time_zone = 'Eastern Time (US & Canada)'
+    # config for setting local time zone; did not hold as app was deployed to heroku.
+    # Went with Time.zone.local to seed db flight departure times.
+
+    # config.active_record.default_timezone = :local
+    # config.time_zone = 'Eastern Time (US & Canada)'
   end
 end
