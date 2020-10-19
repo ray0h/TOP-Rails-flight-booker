@@ -1,0 +1,18 @@
+<h2>Odin Airlines</h2>
+
+<p> Booking confirmation </p>
+<p> 
+  Confirmation Number: <%= @booking.id %><br/>
+  Flight No: <%= @booking.flight.id %><br/>
+  Flight Date: <%= @booking.flight.dep_date.strftime('%a, %B %d, %Y') %><br/>
+  Flight Time: <%= @booking.flight.dep_time.strftime('%l:%M %P') %><br/>
+  Depart: <%= @booking.flight.depart.code %><br/>
+  Arrive: <%= @booking.flight.arrival.code %><br/>
+  Passengers:<br/>
+  <% @passengers.each_with_index do |passenger, ind| %>
+    Passenger <%= ind+1 %>: <%= passenger.name %><br/>
+  <% end %>
+</p>
+
+<p>Click <%= link_to 'here', @url %> to see your confirmation info</p>
+<p>Enjoy Your Trip!</p>

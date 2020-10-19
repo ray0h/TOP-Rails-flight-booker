@@ -1,0 +1,15 @@
+Odin Airlines Booking confirmation
+------------------------------------
+Confirmation Number: <%= @booking.id %>
+Flight No: <%= @booking.flight.id %>
+Flight Date: <%= @booking.flight.dep_date.strftime('%a, %B %d, %Y') %>
+Flight Time: <%= @booking.flight.dep_time.strftime('%l:%M %P') %>
+Depart: <%= @booking.flight.depart.code %>
+Arrive: <%= @booking.flight.arrival.code %>
+Passengers:
+<% @passengers.each_with_index do |passenger, ind| %>
+  Passenger <%= ind+1 %>: <%= passenger.name %>
+<% end %>
+
+Click this url: <%= @url %> to see your confirmation info
+Enjoy Your Trip!
