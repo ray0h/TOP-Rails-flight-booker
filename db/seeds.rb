@@ -32,8 +32,8 @@ def flight_time(city1, city2)
   "#{min / 60}h#{min % 60}min"
 end
 
-# create flights for three days starting tomorrow
-(1..3).each do |i|
+# create flights for seven days starting tomorrow
+(1..7).each do |i|
   date = Date.today + i
 
   # loop through airport cities (first)
