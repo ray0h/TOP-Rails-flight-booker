@@ -20,9 +20,22 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
-    @booking.save
+    
+    # respond_to do |format|
+      if @booking.save
+        @booking.passengers.each do |passenger|
+          if passenger.email && passenger.email.length > 3
+            ConfirmationMailer.with(passenger: passenger, flight: Flight.find(@booking.flight_id)).confirm_email.deliver!
 
-    redirect_to booking_path(@booking)
+            # format.html
+            # format.json
+          end
+        end
+        redirect_to booking_path(@booking)
+      # end
+    end
+  
+    # redirect_to booking_path(@booking)
   end
 
   def show

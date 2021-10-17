@@ -8,6 +8,10 @@
   </head>
 
   <body>
+    <h3><%= email_image_tag('odin_logo.svg')%> Odin Airlines <%= "&#x2708".html_safe %></h3>
     <%= yield %>
+    <p>Thanks for booking and have a great day!</p>
+    <p>Sincerely, <br>
+    Odin Airlines</p>
   </body>
 </html>

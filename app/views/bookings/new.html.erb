@@ -14,8 +14,8 @@
     <div class='underline'>Passenger <%= pass_form.index + 1 %>:</div>
     <%= pass_form.label 'Name: ' %><br/>
     <%= pass_form.text_field :name, required: 'required', class: 'border border-black'%><br/>
-    <%= pass_form.label 'Email: ' %><br/>
-    <%= pass_form.text_field :email, required: 'required', class: 'border border-black' %><br/>
+    <%= pass_form.label 'Email: (if you want a confirmation email) ' %><br/>
+    <%= pass_form.text_field :email, class: 'border border-black' %><br/>
   <% end %>
   <%= f.hidden_field :flight_id, :value => @flight.id %>
   <%= f.submit 'Submit', class: 'px-2 py-1 mt-2 bg-blue-400 cursor-pointer rounded hover:bg-blue-500 hover:text-white' %>

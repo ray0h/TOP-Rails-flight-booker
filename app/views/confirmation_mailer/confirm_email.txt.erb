@@ -1,0 +1,17 @@
+Odin Airlines
+====================
+
+Dear <%= passenger.name %>
+
+You have successfully booked a flight.  
+
+Flight Details
+Departure / Arrival: <%= @d_city%> / <%=@dep_city%> TO <%= @a_city%> / <%= @arr_city %>
+Flight No: <%= @flight.id %>
+Departure: <%= @flight.dep_date.strftime('%a, %B %d, %Y')%>, <%= @flight.dep_time.strftime('%l:%M %P') %>
+Flight Time: <%= @flight.flight_time %>
+
+Thanks for booking and have a great day.
+
+Sincerely,
+Odin Airlines
