@@ -10,7 +10,7 @@ class FlightsController < ApplicationController
       flights.each do |flight|
         next if flight.dep_date > Date.today
         gap = flight.dep_date.ld - dep_dates.first.ld 
-        update_date = add_to_date + days_to_add + gap
+        update_date = add_to_date + days_to_add - gap
         params = {
           dep_date: update_date,
           dep_time: flight.dep_time,

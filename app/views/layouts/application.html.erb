@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>TOPRailsFlightBooker</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 </head>
 
   <body class='bg-orange-200'>
-    <nav class='sticky top-0 flex items-center justify-between bg-teal-400 py-4 px-6'>
+    <nav class='sticky top-0 flex flex-col sm:flex-row sm:items-center sm:justify-between bg-teal-400 py-4 px-6'>
       <div class='flex flex-row'>
         <%= image_tag 'odin_logo.svg', size:'25x10', alt: 'TOP logo'%>
         <%= link_to "Odin Airlines &#x2708".html_safe, 'https://www.theodinproject.com/', class: 'ml-2 text-2xl font-bold', target: :_blank%>
